@@ -30,15 +30,21 @@ public class UserService {
 		
 	}
 
+//	public ResponseEntity<UserProfileDto> getUserById(Long id) {
+//	User user= userRepository.findById(id).orElseThrow(()->new RuntimeException("User Not Found with id : "+ id));
+//	UserProfileDto userProfileDtoResponse = new UserProfileDto(
+//			user.getId(),
+//			user.getName(),
+//			user.getProfile().getPhone(), 
+//			user.getProfile().getAddress(),
+//			user.getProfile().getDateOfBirth());
+//	return ResponseEntity.ok(userProfileDtoResponse);
+	
+	
 	public ResponseEntity<UserProfileDto> getUserById(Long id) {
-	User user= userRepository.findById(id).orElseThrow(()->new RuntimeException("User Not Found with id : "+ id));
-	UserProfileDto userProfileDtoResponse = new UserProfileDto(
-			user.getId(),
-			user.getName(),
-			user.getProfile().getPhone(), 
-			user.getProfile().getAddress(),
-			user.getProfile().getDateOfBirth());
-	return ResponseEntity.ok(userProfileDtoResponse);
+		UserProfileDto user= userRepository.getUserById(id);
+		
+		return ResponseEntity.ok(user);
 	
 	
 	
